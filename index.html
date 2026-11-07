@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security Camera Storage Calculator – How Many Days Will My Hard Drive Record?</title>
+<meta name="description" content="Free security camera storage calculator: enter your cameras, resolution, H.264 or H.265 and hard drive size to see how many days of recording you get — or what size drive you need. Built by a licensed NYC installer.">
+<link rel="canonical" href="https://support677.github.io/security-camera-storage-calculator/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Security Camera Storage Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"description":"Estimate how many days a DVR/NVR hard drive records for your security cameras, or what size drive you need.",
+"creator":{"@type":"LocalBusiness","name":"Abstract Enterprises Security Systems","url":"https://www.abstractenterprisessecuritysystems.com/","telephone":"+1-800-486-0943","areaServed":["New York City","Long Island","Hudson Valley"]}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How many days will a 2TB hard drive record for 4 cameras?","acceptedAnswer":{"@type":"Answer","text":"With 4 cameras at 5MP using H.265 and recording 24/7, a 2TB drive holds roughly 10–11 days. Motion-only recording or lower bitrates can stretch that to several weeks."}},
+{"@type":"Question","name":"Does H.265 really save storage?","acceptedAnswer":{"@type":"Answer","text":"Yes. H.265 typically needs about half the bitrate of H.264 for the same picture, so the same drive records roughly twice as many days."}},
+{"@type":"Question","name":"Why is my real recording time different from the calculator?","acceptedAnswer":{"@type":"Answer","text":"Actual bitrate depends on the camera's settings, frame rate, scene detail, night-time noise and how much motion there is. The calculator uses typical main-stream bitrates; check your recorder's bitrate settings for an exact figure."}}]}
+]}
+</script>
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#0d1b3d;--muted:#55607a;--navy:#0b2a6b;--royal:#1f5fe0;--line:#dfe5f1;--good:#0f8a4a}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1020;--card:#131a2e;--ink:#e8edf8;--muted:#9aa6c2;--navy:#9db8ff;--royal:#5b8cff;--line:#26304a;--good:#3ccf86}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.5rem,4.5vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+.lede{color:var(--muted);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
+select,input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-size:1rem}
+.hint{font-size:.8rem;color:var(--muted);margin-top:4px}
+.result{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px}
+.big{font-size:2.3rem;font-weight:800;color:var(--royal);line-height:1.1}
+.sub{color:var(--muted);font-size:.9rem}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--muted);font-weight:600}
+.cta{background:var(--navy);color:#fff;border-radius:14px;padding:20px}
+@media (prefers-color-scheme:dark){.cta{background:#16306f}}
+.cta a{color:#fff;font-weight:700}
+.btn{display:inline-block;background:var(--royal);color:#fff!important;text-decoration:none;padding:12px 18px;border-radius:10px;margin-top:10px}
+h2{font-size:1.25rem;margin:0 0 10px}
+h3{font-size:1rem;margin:16px 0 4px}
+footer{color:var(--muted);font-size:.85rem;margin-top:28px}
+a{color:var(--royal)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Security Camera Storage Calculator — How Many Days Will My Hard Drive Record?</h1>
+<p class="lede">Security camera storage calculator for DVR and NVR systems. Enter your cameras, resolution and drive size to see how many days of recording you'll keep — or flip it and find the hard drive size you need. Free, no sign-up, made by <a href="https://www.abstractenterprisessecuritysystems.com/?utm_source=github&utm_medium=referral&utm_campaign=storage-calculator&utm_content=intro-link">Abstract Enterprises Security Systems</a>, a licensed NYC security camera installer.</p>
+
+<div class="card">
+<div class="grid">
+ <div><label for="cams">Number of cameras</label><input id="cams" type="number" min="1" max="128" value="4"></div>
+ <div><label for="res">Resolution</label>
+  <select id="res"><option value="2">2MP (1080p)</option><option value="4">4MP (2K)</option><option value="5" selected>5MP</option><option value="8">8MP (4K)</option></select></div>
+ <div><label for="codec">Compression</label>
+  <select id="codec"><option value="265" selected>H.265 / H.265+</option><option value="264">H.264</option></select></div>
+ <div><label for="mode">Recording</label>
+  <select id="mode"><option value="1" selected>24/7 continuous</option><option value="0.5">Motion — busy (about 50% of the day)</option><option value="0.25">Motion — normal (about 25%)</option><option value="0.1">Motion — quiet (about 10%)</option></select></div>
+ <div><label for="tb">Hard drive size</label>
+  <select id="tb"><option>1</option><option selected>2</option><option>4</option><option>6</option><option>8</option><option>10</option><option>12</option><option>16</option><option>20</option></select><div class="hint">Terabytes (TB)</div></div>
+ <div><label for="want">Days you want to keep</label><input id="want" type="number" min="1" max="365" value="30"></div>
+</div>
+</div>
+
+<div class="card">
+ <div class="result">
+  <div><div class="sub">Days of recording on <span id="tbOut">2</span> TB</div><div class="big" id="days">–</div></div>
+  <div><div class="sub">Drive needed for <span id="wantOut">30</span> days</div><div class="big" id="need">–</div></div>
+  <div><div class="sub">Storage used per day</div><div class="big" id="perday">–</div></div>
+ </div>
+ <p class="hint" id="bitrateNote"></p>
+</div>
+
+<div class="card">
+<h2>Quick reference: days on common drives (24/7, H.265)</h2>
+<div style="overflow-x:auto"><table id="ref"><thead><tr><th>Cameras</th><th>Resolution</th><th>2 TB</th><th>4 TB</th><th>8 TB</th></tr></thead><tbody></tbody></table></div>
+<p class="hint">Estimates using typical main-stream bitrates. Your recorder's actual bitrate, frame rate, night noise and scene motion change real-world results.</p>
+</div>
+
+<div class="cta">
+<h2 style="color:#fff">Want it done right the first time?</h2>
+<p>We install complete camera systems — cameras, recorder, hard drive sized for the recording time you want, and phone viewing — across NYC, Long Island and the Hudson Valley.</p>
+<a class="btn" href="https://www.abstractenterprisessecuritysystems.com/security-camera-pricing-nyc?utm_source=github&utm_medium=referral&utm_campaign=storage-calculator&utm_content=cta-button">See installed system prices</a>
+<p style="margin:12px 0 0">Or call/text <a href="tel:+18004860943">(800) 486-0943</a></p>
+</div>
+
+<div class="card" style="margin-top:18px">
+<h2>How this security camera storage calculator works</h2>
+<p>Storage per day = number of cameras × bitrate (Mbps) × 86,400 seconds ÷ 8 bits per byte × the share of the day the cameras record. A formatted drive gives you a little less than its label, so we count about 93% of the size as usable.</p>
+<h3>How many days will a 2TB hard drive record for 4 cameras?</h3>
+<p>With 4 cameras at 5MP, H.265, recording 24/7, a 2TB drive holds roughly 10–11 days. Switch to motion recording and it can stretch to several weeks.</p>
+<h3>Does H.265 really save storage?</h3>
+<p>Yes — H.265 needs roughly half the bitrate of H.264 for the same picture, so the same drive keeps about twice as many days.</p>
+<h3>Why does my recorder overwrite old footage?</h3>
+<p>DVRs and NVRs record in a loop: when the drive is full, the oldest footage is replaced. Size the drive for how far back you need to look — many businesses aim for 30 days.</p>
+</div>
+
+<footer>Made by <a href="https://www.abstractenterprisessecuritysystems.com/?utm_source=github&utm_medium=referral&utm_campaign=storage-calculator&utm_content=footer">Abstract Enterprises Security Systems</a> — licensed NYS low-voltage contractor serving all five NYC boroughs, Long Island and the Hudson Valley. Estimates only; not a guarantee of recording time.</footer>
+</div>
+<script>
+const BR={265:{2:2,4:3,5:4,8:6},264:{2:4,4:6,5:8,8:12}}; // Mbps per camera, typical main stream
+const USABLE=0.93;
+const $=id=>document.getElementById(id);
+function gbPerDay(c,r,k,m){return c*BR[k][r]*86400/8/1000*m}
+function fmtTB(gb){const tb=gb/1000;return tb<1?Math.ceil(gb)+' GB':tb.toFixed(1)+' TB'}
+function calc(){
+ const c=Math.max(1,+$('cams').value||1),r=+$('res').value,k=$('codec').value,m=+$('mode').value,tb=+$('tb').value,w=Math.max(1,+$('want').value||1);
+ const d=gbPerDay(c,r,k,m),days=tb*1000*USABLE/d,need=d*w/USABLE;
+ $('days').textContent=(days<10?days.toFixed(1):Math.floor(days))+' days';
+ $('need').textContent=fmtTB(need);
+ $('perday').textContent=d<1000?Math.round(d)+' GB':(d/1000).toFixed(2)+' TB';
+ $('tbOut').textContent=tb;$('wantOut').textContent=w;
+ $('bitrateNote').textContent='Using about '+BR[k][r]+' Mbps per camera ('+r+'MP, H.'+k+'). Common drive sizes: 1, 2, 4, 6, 8, 10, 12 TB.';
+}
+['cams','res','codec','mode','tb','want'].forEach(id=>$(id).addEventListener('input',calc));
+const rows=[[4,5],[4,8],[8,5],[8,8],[16,5]];
+$('ref').querySelector('tbody').innerHTML=rows.map(([c,r])=>{const d=gbPerDay(c,r,265,1);return '<tr><td>'+c+'</td><td>'+r+'MP</td>'+[2,4,8].map(t=>'<td>'+Math.floor(t*1000*USABLE/d)+' days</td>').join('')+'</tr>'}).join('');
+calc();
+</script>
+</body>
+</html>
